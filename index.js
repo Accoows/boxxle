@@ -68,8 +68,8 @@ function animatePlayer() {
 
     if (isLevelComplete()) {
       setTimeout(() => {
-        alert("Level Complete!");
-      }, 100);
+        loadNextLevel();
+      }, 200);
     }
 
     return
@@ -129,9 +129,7 @@ window.addEventListener("keydown", (event) => {
     default:
       return;
   }
-
-  const moved = movePlayer(dx, dy);
-
+  
   animationFrame = 2;
   animationCounter = 0;
   animatePlayer();
@@ -156,6 +154,22 @@ function isLevelComplete() {
   return true;
 }
 
+function nextLevel() {
+  currentLevel++;
+  if (currentLevel >= Levels.length) {
+    alert("You've completed all levels!");
+    currentLevel = 0;
+  }
+
+  grid = JSON.parse(JSON.stringify(Levels[currentLevel]));
+  initialGrid = JSON.parse(JSON.stringify(Levels[currentLevel]));
+  animationFrame = 1;
+  animationCounter = 0;
+  playerDirection = "front";
+  displayLevel(grid);
+}
+
+
 /* Bouton de réinitialisation du niveau et suivant */
 
 // Reset button
@@ -169,17 +183,4 @@ document.getElementById("resetButton").addEventListener("click", () => {
 });
 
 // Next button
-document.getElementById("nextButton").addEventListener("click", () => {
-  currentLevel++;
-  if (currentLevel >= Levels.length) {
-    alert("You've completed all levels!");
-    currentLevel = 0;
-  }
-
-  grid = JSON.parse(JSON.stringify(Levels[currentLevel]));
-  initialGrid = JSON.parse(JSON.stringify(Levels[currentLevel]));
-  animationFrame = 1;
-  animationCounter = 0;
-  playerDirection = "front";
-  displayLevel(grid);
-});
+document.getElementById("nextButton").addEventListener("click", nextLevel);
