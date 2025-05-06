@@ -26,9 +26,33 @@ body {
   .player   { background-image: url("./assets/Player/player_front_01.png"); }
   
   /* test : boîte sur une cible */
-  /*.box-on-target {
-    background-image: url("./assets/Environment/environment_01.png"), url("./assets/Crates/crate_01.png");
+  .box-on-target {
+    background-image: url("./assets/Environment/environment_02.png"), url("./assets/Crates/crate_02.png");
     background-size: cover;
     background-blend-mode: multiply;
-  }*/
+  }
+  
+  /* Boutons */
+  .controls {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #f2e3d5;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: #e0d2c0;
+  }
   
