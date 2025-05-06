@@ -68,7 +68,7 @@ function animatePlayer() {
 
     if (isLevelComplete()) {
       setTimeout(() => {
-        loadNextLevel();
+        nextLevel();
       }, 200);
     }
 
@@ -129,7 +129,9 @@ window.addEventListener("keydown", (event) => {
     default:
       return;
   }
-  
+
+  movePlayer(dx, dy);
+
   animationFrame = 2;
   animationCounter = 0;
   animatePlayer();
